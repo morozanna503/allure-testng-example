@@ -1,6 +1,9 @@
 name: allure-junit5-maven
 
-on: [ push ]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,6 +16,11 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
+
+      - name: Use Node.js 16.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
 
       - name: Run Test
         if: always()
